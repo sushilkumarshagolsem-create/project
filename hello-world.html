@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A polished Hello World page" />
+    <title>Hello, World!</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #f7f8ff;
+        --muted: #b8bdd7;
+        --violet: #8b5cf6;
+        --cyan: #22d3ee;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: #090b19;
+      }
+
+      .orb {
+        position: fixed;
+        width: 32rem;
+        height: 32rem;
+        border-radius: 50%;
+        filter: blur(70px);
+        opacity: .32;
+        pointer-events: none;
+        animation: drift 12s ease-in-out infinite alternate;
+      }
+
+      .orb-one { background: var(--violet); top: -14rem; left: -10rem; }
+      .orb-two { background: var(--cyan); right: -12rem; bottom: -16rem; animation-delay: -5s; }
+
+      main {
+        position: relative;
+        width: min(92vw, 720px);
+        padding: 4.5rem 3rem;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,.16);
+        border-radius: 28px;
+        background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.035));
+        box-shadow: 0 28px 80px rgba(0,0,0,.38), inset 0 1px rgba(255,255,255,.14);
+        backdrop-filter: blur(18px);
+        animation: appear .8s cubic-bezier(.2,.8,.2,1) both;
+      }
+
+      .sparkle {
+        display: inline-grid;
+        place-items: center;
+        width: 56px;
+        height: 56px;
+        margin-bottom: 1.4rem;
+        border-radius: 18px;
+        font-size: 1.7rem;
+        background: linear-gradient(135deg, var(--violet), var(--cyan));
+        box-shadow: 0 12px 30px rgba(91, 80, 230, .35);
+      }
+
+      .eyebrow {
+        margin: 0 0 .7rem;
+        color: var(--cyan);
+        font-size: .76rem;
+        font-weight: 800;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(3rem, 9vw, 6rem);
+        line-height: .98;
+        letter-spacing: -.065em;
+        background: linear-gradient(105deg, #fff 20%, #d8d5ff 52%, #8ceaf6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      p {
+        max-width: 470px;
+        margin: 1.45rem auto 0;
+        color: var(--muted);
+        font-size: clamp(1rem, 2vw, 1.15rem);
+        line-height: 1.7;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        margin-top: 2rem;
+        padding: .85rem 1.25rem;
+        border: 1px solid rgba(255,255,255,.2);
+        border-radius: 999px;
+        color: white;
+        font-weight: 700;
+        text-decoration: none;
+        background: rgba(255,255,255,.09);
+        transition: transform .2s ease, background .2s ease;
+      }
+
+      .button:hover { transform: translateY(-3px); background: rgba(255,255,255,.17); }
+
+      @keyframes appear { from { opacity: 0; transform: translateY(22px) scale(.97); } to { opacity: 1; transform: none; } }
+      @keyframes drift { to { transform: translate(70px, 45px) scale(1.1); } }
+
+      @media (max-width: 520px) { main { padding: 3.5rem 1.5rem; border-radius: 22px; } }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+    </style>
+  </head>
+  <body>
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+    <main>
+      <div class="sparkle" aria-hidden="true">✦</div>
+      <p class="eyebrow">A fresh beginning</p>
+      <h1>Hello, World!</h1>
+      <p>A tiny message, styled with a little wonder. Your next great idea can start right here.</p>
+      <a class="button" href="#hello" onclick="this.textContent = '✓ Welcome!'; return false;">Say hello <span aria-hidden="true">→</span></a>
+    </main>
+  </body>
+</html>
